@@ -18,12 +18,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * HELPER COMMENT END
  */
 
+ namespace MyPlugin\Core;
+
+
 if ( ! class_exists( 'My_Plugin' ) ) :
 
 	/**
 	 * Main My_Plugin Class.
 	 *
-	 * @package		MYPLUGIN
+	 * @package		MyPlugin
 	 * @subpackage	Classes/My_Plugin
 	 * @since		1.0.0
 	 * @author		Jean Paul Jaspers

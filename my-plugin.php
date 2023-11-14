@@ -1,8 +1,9 @@
 <?php
+
 /**
  * My Plugin
  *
- * @package       MYPLUGIN
+ * @package       MyPlugin
  * @author        Jean Paul Jaspers
  * @license       gplv2
  * @version       1.0.0
@@ -22,6 +23,8 @@
  * You should have received a copy of the GNU General Public License
  * along with My Plugin. If not, see <https://www.gnu.org/licenses/gpl-2.0.html/>.
  */
+
+ namespace MyPlugin;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -60,6 +63,29 @@ define( 'MYPLUGIN_PLUGIN_DIR',	plugin_dir_path( MYPLUGIN_PLUGIN_FILE ) );
 
 // Plugin Folder URL
 define( 'MYPLUGIN_PLUGIN_URL',	plugin_dir_url( MYPLUGIN_PLUGIN_FILE ) );
+
+spl_autoload_register(function ($class) {
+    // Base namespace for the plugin
+    $base_namespace = 'MyPlugin';
+
+    // Check if the class uses the namespace prefix
+    $len = strlen($base_namespace);
+    if (strncmp($base_namespace, $class, $len) !== 0) {
+        // No, move to the next registered autoloader
+        return;
+    }
+
+    // Get the relative class name
+    $relative_class = substr($class, $len);
+
+    // Replace namespace separators with directory separators in the relative class name, append with .php
+    $file = MYPLUGIN_PLUGIN_DIR . str_replace('\\', '/', $relative_class) . '.php';
+
+    // If the file exists, require it
+    if (file_exists($file)) {
+        require $file;
+    }
+});
 
 /**
  * Load the main class for the core functionality
