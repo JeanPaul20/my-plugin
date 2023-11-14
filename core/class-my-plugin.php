@@ -21,6 +21,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  namespace MyPlugin\Core;
 
 
+if ( ! class_exists( 'My_Plugin' ) ) :
+ namespace MyPlugin\Core;
+
+
 	/**
 	 * Main My_Plugin Class.
 	 *
