@@ -47,10 +47,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 
 // Plugin name
-define( 'MYPLUGIN_NAME',			'My Plugin' );
+define( 'MYPLUGIN_NAME', 'My Plugin' );
 
 // Plugin version
-define( 'MYPLUGIN_VERSION',		'1.0.0' );
+define( 'MYPLUGIN_VERSION',	'1.0.0' );
 
 // Plugin Root File
 define( 'MYPLUGIN_PLUGIN_FILE',	__FILE__ );
@@ -64,28 +64,6 @@ define( 'MYPLUGIN_PLUGIN_DIR',	plugin_dir_path( MYPLUGIN_PLUGIN_FILE ) );
 // Plugin Folder URL
 define( 'MYPLUGIN_PLUGIN_URL',	plugin_dir_url( MYPLUGIN_PLUGIN_FILE ) );
 
-spl_autoload_register(function ($class) {
-    // Base namespace for the plugin
-    $base_namespace = 'MyPlugin';
-
-    // Check if the class uses the namespace prefix
-    $len = strlen($base_namespace);
-    if (strncmp($base_namespace, $class, $len) !== 0) {
-        // No, move to the next registered autoloader
-        return;
-    }
-
-    // Get the relative class name
-    $relative_class = substr($class, $len);
-
-    // Replace namespace separators with directory separators in the relative class name, append with .php
-    $file = MYPLUGIN_PLUGIN_DIR . str_replace('\\', '/', $relative_class) . '.php';
-
-    // If the file exists, require it
-    if (file_exists($file)) {
-        require $file;
-    }
-});
 
 /**
  * The main function to load the only instance
@@ -96,7 +74,7 @@ spl_autoload_register(function ($class) {
  * @return  object|My_Plugin
  */
 function MYPLUGIN() {
-	return My_Plugin::instance();
+	return Core\My_Plugin::instance();
 }
 
 MYPLUGIN();
