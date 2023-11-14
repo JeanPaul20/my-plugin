@@ -21,8 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  namespace MyPlugin\Core;
 
 
-if ( ! class_exists( 'My_Plugin' ) ) :
-
 	/**
 	 * Main My_Plugin Class.
 	 *
@@ -153,5 +151,3 @@ if ( ! class_exists( 'My_Plugin' ) ) :
 		}
 
 	}
-
-endif; // End if class_exists check.
