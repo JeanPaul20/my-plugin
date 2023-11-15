@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * These callable functions can be called everywhere within the plugin 
  * as followed using the get_plugin_name() as an example: 
  * 
- * My_Plugin()->settings->get_plugin_name();
+ *  MYPLUGIN()->settings->get_plugin_name();
  * 
  * HELPER COMMENT END
  */
@@ -111,7 +111,7 @@ class My_Plugin_Settings{
 	 * @since	1.0.0
 	 * @return	string The plugin name
 	 * 
-	 * @dev My_Plugin()->settings->get_plugin_name();
+	 * @dev  MYPLUGIN()->settings->get_plugin_name();
 	 */
 	public function get_plugin_name(){
 		return apply_filters( 'My_Plugin/settings/get_plugin_name', $this->plugin_name );
@@ -124,7 +124,7 @@ class My_Plugin_Settings{
 	 * @since 1.0.0
 	 * @return string The plugin version
 	 * 
-	 * @dev My_Plugin()->settings->get_plugin_version();
+	 * @dev  MYPLUGIN()->settings->get_plugin_version();
 	 */
 	public function get_plugin_version(){
 		return apply_filters( 'My_Plugin/settings/get_plugin_versio', $this->plugin_version );
