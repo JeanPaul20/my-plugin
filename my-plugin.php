@@ -61,6 +61,7 @@ function setup_constants(): void
 function activate_plugin(): void
 {
   add_option('my_plugin_activated', true);
+  Init\My_Plugin_Activator::activate();
 }
 
 function is_activated(): bool
@@ -95,4 +96,4 @@ function init_plugin()
   // Initialize the plugin
   $plugin->instance();
 }
-register_activation_hook( __FILE__, __NAMESPACE__ . '\activate_plugin' );
+register_activation_hook( __FILE__, __NAMESPACE__ . '\\activate_plugin' );
