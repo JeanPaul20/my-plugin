@@ -24,7 +24,7 @@
  * along with My Plugin. If not, see <https://www.gnu.org/licenses/gpl-2.0.html/>.
  */
 
- namespace MyPlugin;
+ namespace My_Plugin;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * that are used by WordPress to differenciate the plugin and register it properly.
  * It also contains further PHPDocs parameter for a better documentation
  * 
- * The function MY_PLUGIN() is the main function that you will be able to 
+ * The function MYPLUGIN() is the main function that you will be able to 
  * use throughout your plugin to extend the logic. Further information
  * about that is available within the sub classes.
  * 
@@ -53,16 +53,16 @@ define( 'MYPLUGIN_NAME', 'My Plugin' );
 define( 'MYPLUGIN_VERSION',	'1.0.0' );
 
 // Plugin Root File
-define( 'MYPLUGIN_PLUGIN_FILE',	__FILE__ );
+define( 'MY_PLUGIN_FILE',	__FILE__ );
 
 // Plugin base
-define( 'MYPLUGIN_PLUGIN_BASE',	plugin_basename( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MY_PLUGIN_BASE',	plugin_basename( MY_PLUGIN_FILE ) );
 
 // Plugin Folder Path
-define( 'MYPLUGIN_PLUGIN_DIR',	plugin_dir_path( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MY_PLUGIN_DIR',	plugin_dir_path( MY_PLUGIN_FILE ) );
 
 // Plugin Folder URL
-define( 'MYPLUGIN_PLUGIN_URL',	plugin_dir_url( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MY_PLUGIN_URL',	plugin_dir_url( MY_PLUGIN_FILE ) );
 
 
 /**
@@ -77,4 +77,4 @@ function MYPLUGIN() {
 	return Core\My_Plugin::instance();
 }
 
-MY_PLUGIN();
+MYPLUGIN();

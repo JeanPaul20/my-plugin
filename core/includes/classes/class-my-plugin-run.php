@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * Thats where we bring the plugin to life
  *
- * @package		MYPLUGIN
+ * @package		My_Plugin
  * @subpackage	Core/Includes/Classes/My_Plugin_Run
  * @author		Jean Paul Jaspers
  * @since		1.0.0
@@ -113,7 +113,7 @@ class My_Plugin_Run{
 	 * @return	void
 	 */
 	public function enqueue_backend_scripts_and_styles() {
-		wp_enqueue_style( 'myplugin-backend-styles', MYPLUGIN_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), MYPLUGIN_VERSION, 'all' );
+		wp_enqueue_style( 'myplugin-backend-styles', MY_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), My_Plugin_VERSION, 'all' );
 	}
 
 }

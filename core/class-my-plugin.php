@@ -2,10 +2,10 @@
 
 namespace My_Plugin\Core;
 
-namespace MYPLUGIN\Core;
-
-use MyPlugin\Core\Includes\Classes\{
-	My_Plugin_Helpers, My_Plugin_Run, My_Plugin_Settings
+use My_Plugin\Core\Includes\Classes\{
+	My_Plugin_Helpers,
+	My_Plugin_Run,
+	My_Plugin_Settings
 };
 
 
@@ -21,7 +21,7 @@ use MyPlugin\Core\Includes\Classes\{
  *    ( as e.g. self::$instance->helpers = new My_Plugin_Helpers();)
  * 4. Register the class you added to core/includes/classes 
  *     within the includes() function like so
- * 	   require_once MYPLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-helpers.php';
+ * 	   require_once MY_PLUGIN_URL . 'core/includes/classes/class-my-plugin-helpers.php';
  * 
  * The text domain should be passed as a string to the localization functions instead of a variable. 
  * It allows parsing tools to differentiate between text domains. 
@@ -32,20 +32,21 @@ use MyPlugin\Core\Includes\Classes\{
  *
  */
 
- if ( ! defined( 'ABSPATH' ) ) {
-    die( 'Forbidden' );
+if (!defined('ABSPATH')) {
+	die('Forbidden');
 }
 
 
 /**
  * My_Plugin Class.
  *
- * @package		MYPLUGIN
+ * @package		My_Plugin
  * @subpackage	Core/My_Plugin
  * @since		1.0.0
  * @author		Jean Paul Jaspers
  */
-final class My_Plugin{
+final class My_Plugin
+{
 
 	/**
 	 * Define wpdb property in Table class
@@ -63,7 +64,7 @@ final class My_Plugin{
 	 * @var object $plugin_file
 	 * @since      1.0.0
 	 */
-	private $plugin_file = MAIN_MYPLUGIN_FILE;
+	private $plugin_file = MY_PLUGIN_FILE;
 
 	/**
 	 * Retrieving the plugin main file name.
@@ -72,7 +73,7 @@ final class My_Plugin{
 	 * @var string $plugin_file_name = 'my-plugin'
 	 * @since 1.0.0
 	 */
-	private $plugin_file_name = basename(MAIN_MYPLUGIN_FILE, '.php');
+	private $plugin_file_name = basename(MY_PLUGIN_FILE, '.php');
 
 	/**
 	 * Initialize the plugin header information.
@@ -93,7 +94,7 @@ final class My_Plugin{
 	private static $instance;
 
 	/**
-	 * MYPLUGIN helpers object.
+	 * My_Plugin helpers object.
 	 *
 	 * @access	public
 	 * @since	1.0.0
@@ -102,7 +103,7 @@ final class My_Plugin{
 	public $helpers;
 
 	/**
-	 * MYPLUGIN settings object.
+	 * My_Plugin settings object.
 	 *
 	 * @access	public
 	 * @since	1.0.0
@@ -165,25 +166,26 @@ final class My_Plugin{
 			 * Fire a custom action to allow dependencies
 			 * after the successful plugin setup
 			 */
-			do_action('MYPLUGIN/plugin_loaded');
+			do_action('My_Plugin/plugin_loaded');
 		}
 
 		return self::$instance;
 	}
 
-		/**
-		 * Include required files.
-		 *
-		 * @access  private
-		 * @since   1.0.0
-		 * @return  void
-		 */
-		private function includes() {
-			require_once MYPLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-helpers.php';
-			require_once MYPLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-settings.php';
+	/**
+	 * Include required files.
+	 *
+	 * @access  private
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	private function includes()
+	{
+		require_once MY_PLUGIN_URL . 'core/includes/classes/class-my-plugin-helpers.php';
+		require_once MY_PLUGIN_URL . 'core/includes/classes/class-my-plugin-settings.php';
 
-			require_once MYPLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-run.php';
-		}
+		require_once MY_PLUGIN_URL . 'core/includes/classes/class-my-plugin-run.php';
+	}
 
 	/**
 	 * Add base hooks for the core functionality
@@ -197,15 +199,40 @@ final class My_Plugin{
 		add_action('plugins_loaded', array(self::$instance, 'load_textdomain'));
 	}
 
-		/**
-		 * Loads the plugin language files.
-		 *
-		 * @access  public
-		 * @since   1.0.0
-		 * @return  void
-		 */
-		public function load_textdomain() {
-			load_plugin_textdomain( 'my-plugin', FALSE, dirname( plugin_basename( MYPLUGIN_PLUGIN_FILE ) ) . '/languages/' );
-		}
-
+	/**
+	 * Loads the plugin language files.
+	 *
+	 * @access  public
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	public function load_textdomain()
+	{
+		load_plugin_textdomain('my-plugin', FALSE, dirname(plugin_basename(MY_PLUGIN_FILE)) . '/languages/');
 	}
+
+	public function get_plugin_header_info()
+	{
+		self::$instance->wpdb = $GLOBALS['wpdb'];
+		$this->plugin_data = get_plugin_data($this->plugin_file);
+		// Accessing plugin information
+		$plugin_name = $this->plugin_data['Name'];
+		$plugin_version = $this->plugin_data['Version'];
+		$plugin_author = $this->plugin_data['Author'];
+		$plugin_description = $this->plugin_data['Description'];
+		$text_domain = $this->plugin_data['TextDomain'];
+		$plugin_db_prefix = $this->wpdb->prefix . str_replace("-", "_", $this->plugin_file_name);
+		$plugin_option_slug = str_replace("-", "_", $this->plugin_file_name);
+
+		// Return the plugin header info as an array or use it as needed
+		return array(
+			'Name' => $plugin_name,
+			'Version' => $plugin_version,
+			'Author' => $plugin_author,
+			'Description' => $plugin_description,
+			'Text Domain' => $text_domain,
+			'Plugin DB Prefix' => $plugin_db_prefix,
+			'Option Slug' => $plugin_option_slug,
+		);
+	}
+}

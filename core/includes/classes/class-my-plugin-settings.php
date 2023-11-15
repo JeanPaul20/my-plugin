@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * These callable functions can be called everywhere within the plugin 
  * as followed using the get_plugin_name() as an example: 
  * 
- * MYPLUGIN()->settings->get_plugin_name();
+ * My_Plugin()->settings->get_plugin_name();
  * 
  * HELPER COMMENT END
  */
@@ -27,12 +27,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
     die( 'Forbidden' );
 }
 /**
- * Class MYPLUGIN_Settings
+ * Class My_Plugin_Settings
  *
  * This class contains all of the plugin settings.
  * Here you can configure the whole plugin data.
  *
- * @package		MYPLUGIN
+ * @package		My_Plugin
  * @subpackage	Core/Includes/Classes/My_Plugin_Settings
  * @author		Jean Paul Jaspers
  * @since		1.0.0
@@ -86,14 +86,14 @@ class My_Plugin_Settings{
 	 */
 	private $table_name;
 	/**
-	 * Our MYPLUGIN_Settings constructor 
+	 * Our My_Plugin_Settings constructor 
 	 * to run the plugin logic.
 	 *
 	 * @since 1.0.0
 	 */
 	function __construct($plugin_header_info){
 
-		$this->plugin_name = MYPLUGIN_NAME;
+		$this->plugin_name = My_Plugin_NAME;
 	}
 
 	/**
@@ -111,10 +111,10 @@ class My_Plugin_Settings{
 	 * @since	1.0.0
 	 * @return	string The plugin name
 	 * 
-	 * @dev MYPLUGIN()->settings->get_plugin_name();
+	 * @dev My_Plugin()->settings->get_plugin_name();
 	 */
 	public function get_plugin_name(){
-		return apply_filters( 'MY_PLUGIN/settings/get_plugin_name', $this->plugin_name );
+		return apply_filters( 'My_Plugin/settings/get_plugin_name', $this->plugin_name );
 	}
 
 	/**
@@ -124,10 +124,10 @@ class My_Plugin_Settings{
 	 * @since 1.0.0
 	 * @return string The plugin version
 	 * 
-	 * @dev MYPLUGIN()->settings->get_plugin_version();
+	 * @dev My_Plugin()->settings->get_plugin_version();
 	 */
 	public function get_plugin_version(){
-		return MYPLUGIN()->helpers->output_text( 'my text' );
+		return apply_filters( 'My_Plugin/settings/get_plugin_versio', $this->plugin_version );
 	}
 
 
