@@ -3,7 +3,7 @@
 /**
  * My Plugin
  *
- * @package       MyPlugin
+ * @package       MYPLUGIN
  * @author        Jean Paul Jaspers
  * @license       gplv2
  * @version       1.0.0
@@ -24,11 +24,12 @@
  * along with My Plugin. If not, see <https://www.gnu.org/licenses/gpl-2.0.html/>.
  */
 
- namespace MyPlugin;
-
+ namespace MYPLUGIN\Core;
+ 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) exit;
-
+if ( ! defined( 'ABSPATH' ) ) {
+    die( 'Forbidden' );
+}
 /**
  * HELPER COMMENT START
  * 
@@ -46,24 +47,22 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * HELPER COMMENT END
  */
 
-// Plugin name
-define( 'MYPLUGIN_NAME', 'My Plugin' );
-
-// Plugin version
-define( 'MYPLUGIN_VERSION',	'1.0.0' );
-
-// Plugin Root File
-define( 'MYPLUGIN_PLUGIN_FILE',	__FILE__ );
+// Plugin Root File used to retrieve all header information
+define( 'MAIN_MYPLUGIN_FILE',	__FILE__ );
 
 // Plugin base
-define( 'MYPLUGIN_PLUGIN_BASE',	plugin_basename( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MYPLUGIN_PLUGIN_BASE',	plugin_basename( MAIN_MYPLUGIN_FILE ) );
 
 // Plugin Folder Path
-define( 'MYPLUGIN_PLUGIN_DIR',	plugin_dir_path( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MYPLUGIN_PLUGIN_DIR',	plugin_dir_path( MAIN_MYPLUGIN_FILE ) );
 
 // Plugin Folder URL
-define( 'MYPLUGIN_PLUGIN_URL',	plugin_dir_url( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MYPLUGIN_PLUGIN_URL',	plugin_dir_url( MAIN_MYPLUGIN_FILE ) );
 
+/**
+ * Load the main class for the core functionality
+ */
+require_once MYPLUGIN_PLUGIN_DIR . 'core/class-my-plugin.php';
 
 /**
  * The main function to load the only instance
@@ -74,7 +73,7 @@ define( 'MYPLUGIN_PLUGIN_URL',	plugin_dir_url( MYPLUGIN_PLUGIN_FILE ) );
  * @return  object|My_Plugin
  */
 function MYPLUGIN() {
-	return Core\My_Plugin::instance();
+	return My_Plugin::instance();
 }
 
 MYPLUGIN();
