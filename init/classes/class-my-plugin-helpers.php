@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This class contains repetitive functions that
  * are used globally within the plugin.
  *
- * @package		MYPLUGIN
+ * @package		My_Plugin
  * @subpackage	Classes/My_Plugin_Helpers
  * @author		Jean Paul Jaspers
  * @since		1.0.0
@@ -65,15 +65,15 @@ class My_Plugin_Helpers{
 	 * Down below you will find a demo function called output_text()
 	 * To access this function from any other class, you can call it as followed:
 	 * 
-	 * MYPLUGIN()->helpers->output_text( 'my text' );
+	 * My_Plugin()->helpers->output_text( 'my text' );
 	 * 
 	 */
 
 	 public function __construct()
 	{
-		$this->option_slug = MYPLUGIN()->settings->get_option_slug();
-		$this->plugin_db_prefix = MYPLUGIN()->settings->get_table_name();
-		$this->table_name = MYPLUGIN()->settings->get_table_name();
+		$this->option_slug = \My_Plugin\Init()->settings->get_option_slug();
+		$this->plugin_db_prefix = \My_Plugin\Init()->settings->get_table_name();
+		$this->table_name = \My_Plugin\Init()->settings->get_table_name();
 	}
 	 
 	/**
@@ -100,7 +100,7 @@ class My_Plugin_Helpers{
 	 *     'en_EN' => 'Welcome to my website',
 	 *     'nl_NL' => 'Welkom op mijn website'
 	 * ];
-	 * MYPLUGIN()->helpers->set_language_texts('welcome_texts', $texts);
+	 * \My_Plugin\Init()->helpers->set_language_texts('welcome_texts', $texts);
 	 */
 	public function set_language_texts($name, $texts)
 	{

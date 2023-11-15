@@ -156,7 +156,7 @@ final class My_Plugin_Main
 			self::$instance->get_plugin_header_info();
 			self::$instance->base_hooks();
 			self::$instance->helpers = new My_Plugin_Helpers();
-			self::$instance->settings = new My_Plugin_Settings(self::$instance->get_plugin_header_info());
+			self::$instance->settings = new My_Plugin_Settings();
 
 			//Fire the plugin logic
 			new My_Plugin_Run();

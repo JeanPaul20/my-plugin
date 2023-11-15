@@ -7,33 +7,14 @@ if (!defined('ABSPATH')) {
 	die('Forbidden');
 }
 
-
 /**
- * HELPER COMMENT START
- * 
- * This class contains all of the plugin related settings.
- * Everything that is relevant data and used multiple times throughout 
- * the plugin.
- * 
- * To define the actual values, we recommend adding them as shown above
- * within the __construct() function as a class-wide variable. 
- * This variable is then used by the callable functions down below. 
- * These callable functions can be called everywhere within the plugin 
- * as followed using the get_plugin_name() as an example: 
- * 
- * MYPLUGIN->settings->get_plugin_name();
- * 
- * HELPER COMMENT END
- */
-
-/**
- * Class MYPLUGIN_Settings
+ * Class My_Plugin_Settings
  *
  * This class contains all of the plugin settings.
  * Here you can configure the whole plugin data.
  *
- * @package		MYPLUGIN
- * @subpackage	Classes/MYPLUGIN_Settings
+ * @package		My_Plugin
+ * @subpackage	Classes/My_Plugin_Settings
  * @author		Jean Paul Jaspers
  * @since		1.0.0
  */
@@ -93,14 +74,14 @@ class My_Plugin_Settings
 	private $table_name;
 
 	/**
-	 * Our MYPLUGIN_Settings constructor 
+	 * Our My_Plugin_Settings constructor 
 	 * to run the plugin logic.
 	 *
 	 * @since 1.0.0
 	 */
 	function __construct()
 	{
-		$this->plugin_info = Init()->get_plugin_header_info();
+		$this->plugin_info = \My_Plugin\Init()->get_plugin_header_info();
 		$this->plugin_name = $this->plugin_info['Name'];
 		$this->plugin_version = $this->plugin_info['Version'];
 
@@ -124,11 +105,11 @@ class My_Plugin_Settings
 	 * @since	1.0.0
 	 * @return	string The plugin name
 	 * 
-	 * @dev  MYPLUGIN()->settings->get_plugin_name();
+	 * @dev  Init()->settings->get_plugin_name();
 	 */
 	public function get_plugin_name()
 	{
-		return apply_filters('MYPLUGIN/settings/get_plugin_name', $this->plugin_name);
+		return apply_filters('Init/settings/get_plugin_name', $this->plugin_name);
 	}
 
 	/**
@@ -138,11 +119,11 @@ class My_Plugin_Settings
 	 * @since 1.0.0
 	 * @return string The plugin version
 	 * 
-	 * @dev  MYPLUGIN()->settings->get_plugin_version();
+	 * @dev  Init()->settings->get_plugin_version();
 	 */
 	public function get_plugin_version()
 	{
-		return apply_filters('MYPLUGIN/settings/get_plugin_versio', $this->plugin_version);
+		return apply_filters('Init/settings/get_plugin_versio', $this->plugin_version);
 	}
 
 	/**
@@ -152,11 +133,11 @@ class My_Plugin_Settings
 	 * @since 1.0.0
 	 * @return string The option slug used to store plugin settings options
 	 * 
-	 * @dev MYPLUGIN()->settings->get_option_slug();
+	 * @dev Init()->settings->get_option_slug();
 	 */
 	public function get_option_slug()
 	{
-		return apply_filters('MYPLUGIN/settings/get_option_slug', $this->option_slug . '_current_language');
+		return apply_filters('Init/settings/get_option_slug', $this->option_slug . '_current_language');
 	}
 
 	/**
@@ -166,11 +147,11 @@ class My_Plugin_Settings
 	 * @since 1.0.0 
 	 * @return string the plugin databse table prefix
 	 * 
-	 * @dev MYPLUGIN()->settings->get_table_name();
+	 * @dev Init()->settings->get_table_name();
 	 */
 	public function get_plugin_db_prefix()
 	{
-		return apply_filters('MYPLUGIN/settings/get_plugin_db_prefix', $this->plugin_db_prefix);
+		return apply_filters('Init/settings/get_plugin_db_prefix', $this->plugin_db_prefix);
 	}
 
 
@@ -181,10 +162,10 @@ class My_Plugin_Settings
 	 * @since 1.0.0
 	 * @return string The table name.
 	 * 
-	 * @dev MYPLUGIN()->settings->get_table_name();
+	 * @dev Init()->settings->get_table_name();
 	 */
 	public function get_table_name()
 	{
-		return apply_filters('MYPLUGIN/settings/get_table_name', $this->table_name);
+		return apply_filters('Init/settings/get_table_name', $this->table_name);
 	}
 }
