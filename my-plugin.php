@@ -47,6 +47,8 @@
  * HELPER COMMENT END
  */
 
+define('MY_PLUGIN_NAME', 'my-plugin');
+
 // Plugin Root File
 define( 'MY_PLUGIN_FILE',	__FILE__ );
 
