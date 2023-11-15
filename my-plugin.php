@@ -27,54 +27,58 @@
 namespace My_Plugin;
 
 if (!defined('ABSPATH')) {
-	die('Forbidden');
+  die('Forbidden');
 }
 
 
-function setup_constants(): void {
-    if ( ! defined( 'MY_PLUGIN_NAME' ) ) {
-		define('MY_PLUGIN_NAME', 'my-plugin');
-    }
+function setup_constants(): void
+{
+  if (!defined('MY_PLUGIN_NAME')) {
+    define('MY_PLUGIN_NAME', 'my-plugin');
+  }
 
-    if ( ! defined( 'MY_PLUGIN_VERSION' ) ) {
-        define('MY_PLUGIN_VERSION', '1.0.0');
-    }
+  if (!defined('MY_PLUGIN_VERSION')) {
+    define('MY_PLUGIN_VERSION', '1.0.0');
+  }
 
-    if ( ! defined( 'MY_PLUGIN_FILE' ) ) {
-        define('MY_PLUGIN_FILE',	__FILE__);
-    }
+  if (!defined('MY_PLUGIN_FILE')) {
+    define('MY_PLUGIN_FILE',  __FILE__);
+  }
 
-    if ( ! defined( '' ) ) {
-		define('MY_PLUGIN_BASE',	plugin_basename(MY_PLUGIN_FILE));
-    }
+  if (!defined('')) {
+    define('MY_PLUGIN_BASE',  plugin_basename(MY_PLUGIN_FILE));
+  }
 
-	if ( ! defined( 'MY_PLUGIN_DIR' ) ) {
-		define('MY_PLUGIN_DIR',	plugin_dir_path(MY_PLUGIN_FILE));
-	}
+  if (!defined('MY_PLUGIN_DIR')) {
+    define('MY_PLUGIN_DIR',  plugin_dir_path(MY_PLUGIN_FILE));
+  }
 
-	if ( ! defined( 'MY_PLUGIN_URL' ) ) {
-		define('MY_PLUGIN_URL',	plugin_dir_url(MY_PLUGIN_FILE));
-	}
+  if (!defined('MY_PLUGIN_URL')) {
+    define('MY_PLUGIN_URL',  plugin_dir_url(MY_PLUGIN_FILE));
+  }
 }
 
-function activate_plugin(): void {
-  add_option( 'my_plugin_activated', true );
+function activate_plugin(): void
+{
+  add_option('my_plugin_activated', true);
 }
 
-function is_activated(): bool {
-  $just_activated = is_admin() && get_option( 'my_plugin_activated' );
+function is_activated(): bool
+{
+  $just_activated = is_admin() && get_option('my_plugin_activated');
 
-  if ( $just_activated ) {
-      delete_option( 'my_plugin_activated' );
+  if ($just_activated) {
+    delete_option('my_plugin_activated');
 
-      return true;
+    return true;
   }
 
   return false;
 }
 
-function init_plugin(): void {
-  
+function init_plugin()
+{
+
   require_once 'autoloader.php';
 
   // Setup plugin constants
@@ -83,11 +87,12 @@ function init_plugin(): void {
   // Instantiate the `Plugin` object
   $plugin = new Init\My_Plugin_Main();
 
-  if ( is_activated() ) {
-      // Mark the plugin as activated
-      $plugin->mark_as_activated();
+  if (is_activated()) {
+    // Mark the plugin as activated
+    $plugin->mark_as_activated();
   }
 
   // Initialize the plugin
   $plugin->instance();
 }
+register_activation_hook( __FILE__, __NAMESPACE__ . '\activate_plugin' );
