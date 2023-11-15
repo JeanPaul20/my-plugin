@@ -6,7 +6,7 @@
  * This file contains Autoloader class which can manage and handle using classes and
  * files by including them when they are needed.
  *
- * @package    MyPlugin
+ * @package    My_Plugin
  * @author     Jean Paul Jaspers <jeanpauljaspers@gmail.com>
  * @link       https://jeanpaulart.com/plugins/easy-multilingual-wp/
  * @since      1.0.0

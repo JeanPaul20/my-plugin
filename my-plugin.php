@@ -30,6 +30,7 @@ if (!defined('ABSPATH')) {
 	die('Forbidden');
 }
 
+
 function setup_constants(): void {
     if ( ! defined( 'MY_PLUGIN_NAME' ) ) {
 		define('MY_PLUGIN_NAME', 'my-plugin');
@@ -56,11 +57,37 @@ function setup_constants(): void {
 	}
 }
 
-require_once plugin_dir_path(__FILE__) . 'autoloader.php';
+function activate_plugin(): void {
+  add_option( 'my_plugin_activated', true );
+}
 
-setup_constants();
+function is_activated(): bool {
+  $just_activated = is_admin() && get_option( 'my_plugin_activated' );
 
-function Plugin() {
-	return \My_Plugin\Init\My_Plugin_Main::instance();
-} 
-Plugin();
+  if ( $just_activated ) {
+      delete_option( 'my_plugin_activated' );
+
+      return true;
+  }
+
+  return false;
+}
+
+function init_plugin(): void {
+  
+  require_once 'autoloader.php';
+
+  // Setup plugin constants
+  setup_constants();
+
+  // Instantiate the `Plugin` object
+  $plugin = new Init\My_Plugin_Main();
+
+  if ( is_activated() ) {
+      // Mark the plugin as activated
+      $plugin->mark_as_activated();
+  }
+
+  // Initialize the plugin
+  $plugin->instance();
+}

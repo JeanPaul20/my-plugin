@@ -9,6 +9,7 @@ use My_Plugin\Init\Classes\{
 };
 
 
+
 /**
  * 
  * This is the main class that is responsible for registering
@@ -110,7 +111,20 @@ final class My_Plugin_Main
 	 * @var		object|My_Plugin_Settings
 	 */
 	public $settings;
+
+	/**
+	 * My_Plugin main plugin file constants object.
+	 *
+	 * @access	public
+	 * @since	1.0.0
+	 * @var		object|My_Plugin
+	 */
 	public $plugin;
+
+	/**
+     * @var bool Whether the plugin was just activated.
+     */
+    private bool $just_activated = false;
 
 	/**
 	 * Throw error on object clone.
@@ -138,7 +152,14 @@ final class My_Plugin_Main
 		_doing_it_wrong(__FUNCTION__, __('You are not allowed to unserialize this class.', 'my-plugin'), '1.0.0');
 	}
 
-
+	/**
+     * Mark the plugin as activated.
+     *
+     * @return void
+     */
+    public function mark_as_activated(): void {
+        $this->just_activated = true;
+    }
 	/**
 	 * Main My_Plugin Instance.
 	 *

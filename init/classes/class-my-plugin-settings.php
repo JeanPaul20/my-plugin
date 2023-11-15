@@ -81,7 +81,8 @@ class My_Plugin_Settings
 	 */
 	function __construct()
 	{
-		$this->plugin_info = Plugin()->get_plugin_header_info();
+		$this->plugin_info = instance()->helpers()->set_option_slug($this->option_slug);
+		$this->plugin_info = \My_Plugin\Init\My_Plugin_Main::instance()->get_plugin_header_info();
 		$this->plugin_name = $this->plugin_info['Name'];
 		$this->plugin_version = $this->plugin_info['Version'];
 
@@ -109,7 +110,7 @@ class My_Plugin_Settings
 	 */
 	public function get_plugin_name()
 	{
-		return apply_filters('Init/settings/get_plugin_name', $this->plugin_name);
+		return apply_filters('Plugin/settings/get_plugin_name', $this->plugin_name);
 	}
 
 	/**
