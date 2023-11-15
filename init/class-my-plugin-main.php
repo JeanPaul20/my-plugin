@@ -151,8 +151,8 @@ final class My_Plugin_Main
 	 */
 	public static function instance()
 	{
-		if (!isset(self::$instance) && !(self::$instance instanceof My_Plugin)) {
-			self::$instance	= new My_Plugin;
+		if (!isset(self::$instance) && !(self::$instance instanceof My_Plugin_Main)) {
+			self::$instance	= new My_Plugin_Main;
 			self::$instance->get_plugin_header_info();
 			self::$instance->base_hooks();
 			self::$instance->helpers = new My_Plugin_Helpers();

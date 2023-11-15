@@ -56,16 +56,15 @@ function setup_constants(): void {
 	}
 }
 
+function Init() {
+  return Init\My_Plugin_Main::instance();
+}
+
 function init_plugin(): void {
     // Composer autoload
     require_once plugin_dir_path(__FILE__) . 'autoloader.php';
 
     // Setup plugin constants
     setup_constants();
-
-    // Instantiate the `Plugin` object
-    $plugin = new My_Plugin_Main();
-
-    // Initialize the plugin
-    $plugin->init();
+    Init();
 }

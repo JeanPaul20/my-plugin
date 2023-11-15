@@ -1,6 +1,6 @@
 <?php
 
-namespace MYPLUGIN\Init\Classes;
+namespace My_Plugin\Init\Classes;
 
 // Exit if accessed directly.
 if (!defined('ABSPATH')) {
@@ -37,7 +37,7 @@ if (!defined('ABSPATH')) {
  * @author		Jean Paul Jaspers
  * @since		1.0.0
  */
-class MYPLUGIN_Settings
+class My_Plugin_Settings
 {
 
 	/**
@@ -100,7 +100,7 @@ class MYPLUGIN_Settings
 	 */
 	function __construct()
 	{
-		$this->plugin_info = \MYPLUGIN()->get_plugin_header_info();
+		$this->plugin_info = Init()->get_plugin_header_info();
 		$this->plugin_name = $this->plugin_info['Name'];
 		$this->plugin_version = $this->plugin_info['Version'];
 
