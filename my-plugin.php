@@ -3,7 +3,7 @@
 /**
  * My Plugin
  *
- * @package       MyPlugin
+ * @package       My_Plugin
  * @author        Jean Paul Jaspers
  * @license       gplv2
  * @version       1.0.0
@@ -48,24 +48,24 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 
 // Plugin name
-define( 'MYPLUGIN_NAME', 'My Plugin' );
+define( 'MY_PLUGIN_NAME', 'My Plugin' );
 
 // Plugin version
-define( 'MYPLUGIN_VERSION',	'1.0.0' );
+define( 'MY_PLUGIN_VERSION',	'1.0.0' );
 
 // Plugin Root File
-define( 'MYPLUGIN_PLUGIN_FILE',	__FILE__ );
+define( 'MY_PLUGIN_PLUGIN_FILE',	__FILE__ );
 
 // Plugin base
-define( 'MYPLUGIN_PLUGIN_BASE',	plugin_basename( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MY_PLUGIN_PLUGIN_BASE',	plugin_basename( MY_PLUGIN_PLUGIN_FILE ) );
 
 // Plugin Folder Path
-define( 'MYPLUGIN_PLUGIN_DIR',	plugin_dir_path( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MY_PLUGIN_PLUGIN_DIR',	plugin_dir_path( MY_PLUGIN_PLUGIN_FILE ) );
 
 // Plugin Folder URL
-define( 'MYPLUGIN_PLUGIN_URL',	plugin_dir_url( MYPLUGIN_PLUGIN_FILE ) );
+define( 'MY_PLUGIN_PLUGIN_URL',	plugin_dir_url( MY_PLUGIN_PLUGIN_FILE ) );
 
-require_once MYPLUGIN_PLUGIN_DIR . 'core/class-my-plugin.php';
+require_once MY_PLUGIN_PLUGIN_DIR . 'core/class-my-plugin.php';
 /**
  * The main function to load the only instance
  * of our master class.

@@ -52,7 +52,7 @@ class My_Plugin_Settings{
 	 */
 	function __construct(){
 
-		$this->plugin_name = MYPLUGIN_NAME;
+		$this->plugin_name = MY_PLUGIN_NAME;
 	}
 
 	/**

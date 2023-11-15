@@ -28,7 +28,7 @@ class Autoloader {
 	 * @var object $plugin_file
 	 * @since      1.0.0
 	 */
-	private $plugin_file = MYPLUGIN_PLUGIN_FILE;
+	private $plugin_file = MY_PLUGIN_PLUGIN_FILE;
 
 	/**
 	 * Retrieving the plugin main file name.
@@ -37,7 +37,7 @@ class Autoloader {
 	 * @var string $plugin_file_name = 'my-plugin'
 	 * @since 1.0.0
 	 */
-	private $plugin_file_name = basename(MYPLUGIN_PLUGIN_FILE, '.php');
+	private $plugin_file_name = basename(MY_PLUGIN_PLUGIN_FILE, '.php');
 	/**
 	 * Autoloader constructor.
 	 * This constructor calls spl_autoload_register method with autoload method

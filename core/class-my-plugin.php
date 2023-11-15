@@ -121,10 +121,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		 * @return  void
 		 */
 		private function includes() {
-			require_once MYPLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-helpers.php';
-			require_once MYPLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-settings.php';
+			require_once MY_PLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-helpers.php';
+			require_once MY_PLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-settings.php';
 
-			require_once MYPLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-run.php';
+			require_once MY_PLUGIN_PLUGIN_DIR . 'core/includes/classes/class-my-plugin-run.php';
 		}
 
 		/**
@@ -146,7 +146,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		 * @return  void
 		 */
 		public function load_textdomain() {
-			load_plugin_textdomain( 'my-plugin', FALSE, dirname( plugin_basename( MYPLUGIN_PLUGIN_FILE ) ) . '/languages/' );
+			load_plugin_textdomain( 'my-plugin', FALSE, dirname( plugin_basename( MY_PLUGIN_PLUGIN_FILE ) ) . '/languages/' );
 		}
 
 	}
