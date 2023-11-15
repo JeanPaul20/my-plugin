@@ -1,6 +1,6 @@
 <?php
 
-namespace My_Plugin\Core;
+namespace My_Plugin;
 
 use My_Plugin\Core\Includes\Classes\{
 	My_Plugin_Helpers,
