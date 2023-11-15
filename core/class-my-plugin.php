@@ -1,5 +1,7 @@
 <?php
 
+namespace My_Plugin\Core;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -17,13 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * 
  * HELPER COMMENT END
  */
-
- namespace MyPlugin\Core;
-
-
-if ( ! class_exists( 'My_Plugin' ) ) :
- namespace MyPlugin\Core;
-
 
 	/**
 	 * Main My_Plugin Class.

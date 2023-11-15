@@ -1,6 +1,6 @@
 <?php
 
-namespace MyPlugin\Core\Includes\Classes;
+namespace My_Plugin\Core\Includes\Classes;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;

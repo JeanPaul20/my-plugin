@@ -1,6 +1,6 @@
 <?php
 
-namespace MyPlugin\Core\Includes\Classes;
+namespace My_Plugin\Core\Includes\Classes;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -71,10 +71,10 @@ class My_Plugin_Settings{
 	 * @return	string The plugin name
 	 */
 	public function get_plugin_name(){
-		return apply_filters( 'MYPLUGIN/settings/get_plugin_name', $this->plugin_name );
+		return apply_filters( 'MY_PLUGIN/settings/get_plugin_name', $this->plugin_name );
 	}
 
 	public function get_plugin_version(){
-		return MYPLUGIN()->helpers->output_text( 'my text' );
+		return MY_PLUGIN()->helpers->output_text( 'my text' );
 	}
 }

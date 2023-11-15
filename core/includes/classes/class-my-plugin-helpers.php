@@ -1,6 +1,6 @@
 <?php
 
-namespace MyPlugin\Core\Includes\Classes;
+namespace My_Plugin\Core\Includes\Classes;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -35,7 +35,7 @@ class My_Plugin_Helpers{
 	 * Down below you will find a demo function called output_text()
 	 * To access this function from any other class, you can call it as followed:
 	 * 
-	 * MYPLUGIN()->helpers->output_text( 'my text' );
+	 * MY_PLUGIN()->helpers->output_text( 'my text' );
 	 * 
 	 */
 	 
