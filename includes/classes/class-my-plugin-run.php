@@ -1,8 +1,10 @@
 <?php
 
-namespace My_Plugin\Init\Classes;
+namespace My_Plugin\Includes\Classes;
 
-
+if ( ! defined( 'ABSPATH' ) ) {
+    die( 'Forbidden' );
+}
 
 /**
  * HELPER COMMENT START
@@ -31,11 +33,6 @@ namespace My_Plugin\Init\Classes;
  * 
  * HELPER COMMENT END
  */
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-    die( 'Forbidden' );
-}
 
 
 /**

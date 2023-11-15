@@ -1,9 +1,12 @@
 <?php
 
-namespace My_Plugin\Init\Classes;
+namespace My_Plugin\Includes\Classes;
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+    die( 'Forbidden' );
+}
+
 
 /**
  * Class My_Plugin_Helpers
