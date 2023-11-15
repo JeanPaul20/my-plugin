@@ -1,8 +1,8 @@
 <?php
 
-namespace My_Plugin;
+namespace My_Plugin\Init;
 
-use My_Plugin\Core\Includes\Classes\{
+use My_Plugin\Init\Classes\{
 	My_Plugin_Helpers,
 	My_Plugin_Run,
 	My_Plugin_Settings
