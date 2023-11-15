@@ -41,7 +41,7 @@ if (!defined('ABSPATH')) {
  * My_Plugin Class.
  *
  * @package		My_Plugin
- * @subpackage	Core/My_Plugin
+ * @subpackage	init/My_Plugin
  * @since		1.0.0
  * @author		Jean Paul Jaspers
  */
