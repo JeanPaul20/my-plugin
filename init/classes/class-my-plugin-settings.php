@@ -1,7 +1,12 @@
 <?php
 
+namespace My_Plugin\Init\Classes;
+
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+    die( 'Forbidden' );
+}
+
 
 /**
  * HELPER COMMENT START
@@ -50,7 +55,7 @@ class My_Plugin_Settings{
 	 */
 	function __construct(){
 
-		$this->plugin_name = MYPLUGIN_NAME;
+		$this->plugin_name = MY_PLUGIN_NAME;
 	}
 
 	/**

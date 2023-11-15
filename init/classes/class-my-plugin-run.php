@@ -1,7 +1,12 @@
 <?php
 
+namespace My_Plugin\Init\Classes;
+
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+    die( 'Forbidden' );
+}
+
 
 /**
  * HELPER COMMENT START
@@ -70,7 +75,7 @@ class My_Plugin_Run{
 	 */
 	private function add_hooks(){
 	
-		add_action( 'plugin_action_links_' . MYPLUGIN_PLUGIN_BASE, array( $this, 'add_plugin_action_link' ), 20 );
+		add_action( 'plugin_action_links_' . MY_PLUGIN_BASE, array( $this, 'add_plugin_action_link' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_backend_scripts_and_styles' ), 20 );
 	
 	}
@@ -110,7 +115,7 @@ class My_Plugin_Run{
 	 * @return	void
 	 */
 	public function enqueue_backend_scripts_and_styles() {
-		wp_enqueue_style( 'myplugin-backend-styles', MYPLUGIN_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), MYPLUGIN_VERSION, 'all' );
+		wp_enqueue_style( 'myplugin-backend-styles', MY_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), MY_PLUGIN_VERSION, 'all' );
 	}
 
 }

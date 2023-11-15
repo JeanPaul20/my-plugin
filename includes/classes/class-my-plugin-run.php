@@ -32,7 +32,10 @@ namespace My_Plugin\Core\Includes\Classes;
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+    die( 'Forbidden' );
+}
+
 
 /**
  * Class My_Plugin_Run

@@ -24,10 +24,10 @@
  * along with My Plugin. If not, see <https://www.gnu.org/licenses/gpl-2.0.html/>.
  */
 
- namespace My_Plugin;
+namespace My_Plugin;
 
- if ( ! defined( 'ABSPATH' ) ) {
-    die( 'Forbidden' );
+if (!defined('ABSPATH')) {
+	die('Forbidden');
 }
 
 /**
@@ -49,17 +49,19 @@
 
 define('MY_PLUGIN_NAME', 'my-plugin');
 
+define('MY_PLUGIN_VERSION', '1.0.0');
+
 // Plugin Root File
-define( 'MY_PLUGIN_FILE',	__FILE__ );
+define('MY_PLUGIN_FILE',	__FILE__);
 
 // Plugin base
-define( 'MY_PLUGIN_BASE',	plugin_basename( MY_PLUGIN_FILE ) );
+define('MY_PLUGIN_BASE',	plugin_basename(MY_PLUGIN_FILE));
 
 // Plugin Folder Path
-define( 'MY_PLUGIN_DIR',	plugin_dir_path( MY_PLUGIN_FILE ) );
+define('MY_PLUGIN_DIR',	plugin_dir_path(MY_PLUGIN_FILE));
 
 // Plugin Folder URL
-define( 'MY_PLUGIN_URL',	plugin_dir_url( MY_PLUGIN_FILE ) );
+define('MY_PLUGIN_URL',	plugin_dir_url(MY_PLUGIN_FILE));
 
 
 /**
@@ -70,9 +72,10 @@ define( 'MY_PLUGIN_URL',	plugin_dir_url( MY_PLUGIN_FILE ) );
  * @since   1.0.0
  * @return  object|My_Plugin
  */
-function MYPLUGIN() {
-	require_once plugin_dir_path( __FILE__ ) . 'autoloader.php';
-	return My_Plugin::instance();
+function MYPLUGIN()
+{
+	require_once plugin_dir_path(__FILE__) . 'autoloader.php';
+	return Init\My_Plugin::instance();
 }
 
 MYPLUGIN();

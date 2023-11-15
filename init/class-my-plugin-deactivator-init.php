@@ -1,5 +1,6 @@
 <?php
 
+namespace My_Plugin\Init;
 /**
  * Fired during plugin deactivation.
  *
