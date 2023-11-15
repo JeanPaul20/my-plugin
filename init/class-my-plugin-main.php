@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
  * @since		1.0.0
  * @author		Jean Paul Jaspers
  */
-final class My_Plugin
+final class My_Plugin_Main
 {
 
 	/**

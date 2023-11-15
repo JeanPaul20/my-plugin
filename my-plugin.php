@@ -30,52 +30,42 @@ if (!defined('ABSPATH')) {
 	die('Forbidden');
 }
 
-/**
- * HELPER COMMENT START
- * 
- * This file contains the main information about the plugin.
- * It is used to register all components necessary to run the plugin.
- * 
- * The comment above contains all information about the plugin 
- * that are used by WordPress to differenciate the plugin and register it properly.
- * It also contains further PHPDocs parameter for a better documentation
- * 
- * The function MYPLUGIN() is the main function that you will be able to 
- * use throughout your plugin to extend the logic. Further information
- * about that is available within the sub classes.
- * 
- * HELPER COMMENT END
- */
+function setup_constants(): void {
+    if ( ! defined( 'MY_PLUGIN_NAME' ) ) {
+		define('MY_PLUGIN_NAME', 'my-plugin');
+    }
 
-define('MY_PLUGIN_NAME', 'my-plugin');
+    if ( ! defined( 'MY_PLUGIN_VERSION' ) ) {
+        define('MY_PLUGIN_VERSION', '1.0.0');
+    }
 
-define('MY_PLUGIN_VERSION', '1.0.0');
+    if ( ! defined( 'MY_PLUGIN_FILE' ) ) {
+        define('MY_PLUGIN_FILE',	__FILE__);
+    }
 
-// Plugin Root File
-define('MY_PLUGIN_FILE',	__FILE__);
+    if ( ! defined( '' ) ) {
+		define('MY_PLUGIN_BASE',	plugin_basename(MY_PLUGIN_FILE));
+    }
 
-// Plugin base
-define('MY_PLUGIN_BASE',	plugin_basename(MY_PLUGIN_FILE));
+	if ( ! defined( 'MY_PLUGIN_DIR' ) ) {
+		define('MY_PLUGIN_DIR',	plugin_dir_path(MY_PLUGIN_FILE));
+	}
 
-// Plugin Folder Path
-define('MY_PLUGIN_DIR',	plugin_dir_path(MY_PLUGIN_FILE));
-
-// Plugin Folder URL
-define('MY_PLUGIN_URL',	plugin_dir_url(MY_PLUGIN_FILE));
-
-
-/**
- * The main function to load the only instance
- * of our master class.
- *
- * @author  Jean Paul Jaspers
- * @since   1.0.0
- * @return  object|My_Plugin
- */
-function MYPLUGIN()
-{
-	require_once plugin_dir_path(__FILE__) . 'autoloader.php';
-	return Init\My_Plugin::instance();
+	if ( ! defined( 'MY_PLUGIN_URL' ) ) {
+		define('MY_PLUGIN_URL',	plugin_dir_url(MY_PLUGIN_FILE));
+	}
 }
 
-MYPLUGIN();
+function init_plugin(): void {
+    // Composer autoload
+    require_once plugin_dir_path(__FILE__) . 'autoloader.php';
+
+    // Setup plugin constants
+    setup_constants();
+
+    // Instantiate the `Plugin` object
+    $plugin = new My_Plugin_Main();
+
+    // Initialize the plugin
+    $plugin->init();
+}
