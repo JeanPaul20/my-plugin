@@ -48,6 +48,14 @@ class My_Plugin_Settings{
 	private $plugin_name;
 
 	/**
+	 * The plugin version
+	 *
+	 * @var		string
+	 * @since   1.0.0
+	 */
+	private $plugin_version;
+
+	/**
 	 * Our My_Plugin_Settings constructor 
 	 * to run the plugin logic.
 	 *
@@ -56,6 +64,7 @@ class My_Plugin_Settings{
 	function __construct(){
 
 		$this->plugin_name = MY_PLUGIN_NAME;
+		$this->plugin_version = MY_PLUGIN_VERSION;
 	}
 
 	/**
