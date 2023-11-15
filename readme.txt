@@ -57,5 +57,5 @@ An answer to that question.
 
 == Changelog ==
 
-= 1.0.0: November 14, 2023 =
+= 1.0.0: November 13, 2023 =
 * Birthday of My Plugin

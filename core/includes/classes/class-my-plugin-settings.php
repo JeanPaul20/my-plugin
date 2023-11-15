@@ -18,23 +18,36 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * These callable functions can be called everywhere within the plugin 
  * as followed using the get_plugin_name() as an example: 
  * 
- * MYPLUGIN->settings->get_plugin_name();
+ * MYPLUGIN()->settings->get_plugin_name();
  * 
  * HELPER COMMENT END
  */
 
+ if ( ! defined( 'ABSPATH' ) ) {
+    die( 'Forbidden' );
+}
 /**
- * Class My_Plugin_Settings
+ * Class MYPLUGIN_Settings
  *
  * This class contains all of the plugin settings.
  * Here you can configure the whole plugin data.
  *
  * @package		MYPLUGIN
- * @subpackage	Classes/My_Plugin_Settings
+ * @subpackage	Core/Includes/Classes/My_Plugin_Settings
  * @author		Jean Paul Jaspers
  * @since		1.0.0
  */
 class My_Plugin_Settings{
+
+
+	/**
+	 * Get plugin information header
+	 * 
+	 * @access private
+	 * @return array Plugin header information
+	 * @var $plugin_info
+	 */
+	private $plugin_info;
 
 	/**
 	 * The plugin name
@@ -44,15 +57,43 @@ class My_Plugin_Settings{
 	 */
 	private $plugin_name;
 
+	private $plugin_version;
+
 	/**
-	 * Our My_Plugin_Settings constructor 
+	 * Retrieving the plugin option_slug.
+	 * 
+	 * @access private
+	 * @return string  $option_slug
+	 * @since      1.0.0
+	 */
+	private $option_slug;
+
+	/**
+	 * Retrieving the plugin database table prefix.
+	 * 
+	 * @access private
+	 * @var string $plugin_db_prefix;
+	 * @since 1.0.0
+	 */
+	private $plugin_db_prefix;
+
+	/**
+	 * Get plugin database table name
+	 * 
+	 * @access private
+	 * @return string $table_name;
+	 * @since 1.0.0
+	 */
+	private $table_name;
+	/**
+	 * Our MYPLUGIN_Settings constructor 
 	 * to run the plugin logic.
 	 *
 	 * @since 1.0.0
 	 */
-	function __construct(){
+	function __construct($plugin_header_info){
 
-		$this->plugin_name = MY_PLUGIN_NAME;
+		$this->plugin_name = MYPLUGIN_NAME;
 	}
 
 	/**
@@ -69,12 +110,25 @@ class My_Plugin_Settings{
 	 * @access	public
 	 * @since	1.0.0
 	 * @return	string The plugin name
+	 * 
+	 * @dev MYPLUGIN()->settings->get_plugin_name();
 	 */
 	public function get_plugin_name(){
 		return apply_filters( 'MY_PLUGIN/settings/get_plugin_name', $this->plugin_name );
 	}
 
+	/**
+	 * Return the plugin version
+	 *
+	 * @access public
+	 * @since 1.0.0
+	 * @return string The plugin version
+	 * 
+	 * @dev MYPLUGIN()->settings->get_plugin_version();
+	 */
 	public function get_plugin_version(){
-		return MY_PLUGIN()->helpers->output_text( 'my text' );
+		return MYPLUGIN()->helpers->output_text( 'my text' );
 	}
+
+
 }

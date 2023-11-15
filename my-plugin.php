@@ -24,11 +24,10 @@
  * along with My Plugin. If not, see <https://www.gnu.org/licenses/gpl-2.0.html/>.
  */
 
- namespace My_Plugin;
+ namespace MyPlugin;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
-
 
 /**
  * HELPER COMMENT START
@@ -48,24 +47,24 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 
 // Plugin name
-define( 'MY_PLUGIN_NAME', 'My Plugin' );
+define( 'MYPLUGIN_NAME', 'My Plugin' );
 
 // Plugin version
-define( 'MY_PLUGIN_VERSION',	'1.0.0' );
+define( 'MYPLUGIN_VERSION',	'1.0.0' );
 
 // Plugin Root File
-define( 'MY_PLUGIN_PLUGIN_FILE',	__FILE__ );
+define( 'MYPLUGIN_PLUGIN_FILE',	__FILE__ );
 
 // Plugin base
-define( 'MY_PLUGIN_PLUGIN_BASE',	plugin_basename( MY_PLUGIN_PLUGIN_FILE ) );
+define( 'MYPLUGIN_PLUGIN_BASE',	plugin_basename( MYPLUGIN_PLUGIN_FILE ) );
 
 // Plugin Folder Path
-define( 'MY_PLUGIN_PLUGIN_DIR',	plugin_dir_path( MY_PLUGIN_PLUGIN_FILE ) );
+define( 'MYPLUGIN_PLUGIN_DIR',	plugin_dir_path( MYPLUGIN_PLUGIN_FILE ) );
 
 // Plugin Folder URL
-define( 'MY_PLUGIN_PLUGIN_URL',	plugin_dir_url( MY_PLUGIN_PLUGIN_FILE ) );
+define( 'MYPLUGIN_PLUGIN_URL',	plugin_dir_url( MYPLUGIN_PLUGIN_FILE ) );
 
-require_once MY_PLUGIN_PLUGIN_DIR . 'core/class-my-plugin.php';
+
 /**
  * The main function to load the only instance
  * of our master class.
@@ -74,7 +73,7 @@ require_once MY_PLUGIN_PLUGIN_DIR . 'core/class-my-plugin.php';
  * @since   1.0.0
  * @return  object|My_Plugin
  */
-function MY_PLUGIN() {
+function MYPLUGIN() {
 	return Core\My_Plugin::instance();
 }
 

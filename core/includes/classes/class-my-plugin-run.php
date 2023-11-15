@@ -2,8 +2,6 @@
 
 namespace My_Plugin\Core\Includes\Classes;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * HELPER COMMENT START
@@ -33,13 +31,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * HELPER COMMENT END
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Class My_Plugin_Run
  *
  * Thats where we bring the plugin to life
  *
  * @package		MYPLUGIN
- * @subpackage	Classes/My_Plugin_Run
+ * @subpackage	Core/Includes/Classes/My_Plugin_Run
  * @author		Jean Paul Jaspers
  * @since		1.0.0
  */
@@ -112,7 +113,7 @@ class My_Plugin_Run{
 	 * @return	void
 	 */
 	public function enqueue_backend_scripts_and_styles() {
-		wp_enqueue_style( 'myplugin-backend-styles', MY_PLUGIN_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), MY_PLUGIN_VERSION, 'all' );
+		wp_enqueue_style( 'myplugin-backend-styles', MYPLUGIN_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), MYPLUGIN_VERSION, 'all' );
 	}
 
 }
