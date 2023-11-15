@@ -72,8 +72,24 @@ class My_Plugin_Settings{
 	 * @access	public
 	 * @since	1.0.0
 	 * @return	string The plugin name
+	 * 
+	 * @dev  MYPLUGIN()->settings->get_plugin_name();
 	 */
 	public function get_plugin_name(){
-		return apply_filters( 'MYPLUGIN/settings/get_plugin_name', $this->plugin_name );
+		return apply_filters( 'My_Plugin/settings/get_plugin_name', $this->plugin_name );
 	}
+
+	/**
+	 * Return the plugin version
+	 *
+	 * @access public
+	 * @since 1.0.0
+	 * @return string The plugin version
+	 * 
+	 * @dev  MYPLUGIN()->settings->get_plugin_version();
+	 */
+	public function get_plugin_version(){
+		return apply_filters( 'My_Plugin/settings/get_plugin_versio', $this->plugin_version );
+	}
+
 }

@@ -128,7 +128,7 @@ class My_Plugin_Settings{
 	 * @dev  MYPLUGIN()->settings->get_plugin_version();
 	 */
 	public function get_plugin_version(){
-		return apply_filters( 'My_Plugin/settings/get_plugin_versio', $this->plugin_version );
+		return apply_filters( 'My_Plugin/settings/get_plugin_version', $this->plugin_version );
 	}
 
 

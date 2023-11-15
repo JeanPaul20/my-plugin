@@ -155,7 +155,6 @@ final class My_Plugin
 			self::$instance	= new My_Plugin;
 			self::$instance->get_plugin_header_info();
 			self::$instance->base_hooks();
-			self::$instance->includes();
 			self::$instance->helpers = new My_Plugin_Helpers();
 			self::$instance->settings = new My_Plugin_Settings(self::$instance->get_plugin_header_info());
 
@@ -170,21 +169,6 @@ final class My_Plugin
 		}
 
 		return self::$instance;
-	}
-
-	/**
-	 * Include required files.
-	 *
-	 * @access  private
-	 * @since   1.0.0
-	 * @return  void
-	 */
-	private function includes()
-	{
-		require_once MY_PLUGIN_URL . 'core/includes/classes/class-my-plugin-helpers.php';
-		require_once MY_PLUGIN_URL . 'core/includes/classes/class-my-plugin-settings.php';
-
-		require_once MY_PLUGIN_URL . 'core/includes/classes/class-my-plugin-run.php';
 	}
 
 	/**
