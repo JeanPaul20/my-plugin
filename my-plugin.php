@@ -69,7 +69,7 @@ define( 'MY_PLUGIN_URL',	plugin_dir_url( MY_PLUGIN_FILE ) );
  * @return  object|My_Plugin
  */
 function MYPLUGIN() {
-	require_once __DIR__ . 'class-my-plugin-autoload.php';
+	require_once plugin_dir_path( __FILE__ ) . 'class-my-plugin-autoloader.php';
 	return Core\My_Plugin::instance();
 }
 
