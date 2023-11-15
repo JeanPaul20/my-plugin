@@ -81,7 +81,7 @@ class My_Plugin_Settings
 	 */
 	function __construct()
 	{
-		$this->plugin_info = \My_Plugin\Init()->get_plugin_header_info();
+		$this->plugin_info = Plugin()->get_plugin_header_info();
 		$this->plugin_name = $this->plugin_info['Name'];
 		$this->plugin_version = $this->plugin_info['Version'];
 

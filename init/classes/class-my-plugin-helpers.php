@@ -65,15 +65,15 @@ class My_Plugin_Helpers{
 	 * Down below you will find a demo function called output_text()
 	 * To access this function from any other class, you can call it as followed:
 	 * 
-	 * My_Plugin()->helpers->output_text( 'my text' );
+	 * Init()->helpers->output_text( 'my text' );
 	 * 
 	 */
 
 	 public function __construct()
 	{
-		$this->option_slug = \My_Plugin\Init()->settings->get_option_slug();
-		$this->plugin_db_prefix = \My_Plugin\Init()->settings->get_table_name();
-		$this->table_name = \My_Plugin\Init()->settings->get_table_name();
+		$this->option_slug = Plugin()->settings->get_option_slug();
+		$this->plugin_db_prefix = Plugin()->settings->get_table_name();
+		$this->table_name = Plugin()->settings->get_table_name();
 	}
 	 
 	/**

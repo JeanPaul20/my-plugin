@@ -26,7 +26,7 @@ class Autoloader {
     }
 
     public function autoload($file_name) {
-        if (strpos($file_name, MY_PLUGIN_NAME) === false) {
+        if (strpos($file_name, MY_PLUGIN_NAME ) === false) {
             return;
         }
 

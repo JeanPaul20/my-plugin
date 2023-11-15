@@ -110,7 +110,7 @@ final class My_Plugin_Main
 	 * @var		object|My_Plugin_Settings
 	 */
 	public $settings;
-
+	public $plugin;
 
 	/**
 	 * Throw error on object clone.
@@ -137,6 +137,7 @@ final class My_Plugin_Main
 	{
 		_doing_it_wrong(__FUNCTION__, __('You are not allowed to unserialize this class.', 'my-plugin'), '1.0.0');
 	}
+
 
 	/**
 	 * Main My_Plugin Instance.
