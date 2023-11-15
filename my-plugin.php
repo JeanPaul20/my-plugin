@@ -26,8 +26,9 @@
 
  namespace My_Plugin;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) exit;
+ if ( ! defined( 'ABSPATH' ) ) {
+    die( 'Forbidden' );
+}
 
 /**
  * HELPER COMMENT START
@@ -45,12 +46,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * 
  * HELPER COMMENT END
  */
-
-// Plugin name
-define( 'MYPLUGIN_NAME', 'My Plugin' );
-
-// Plugin version
-define( 'MYPLUGIN_VERSION',	'1.0.0' );
 
 // Plugin Root File
 define( 'MY_PLUGIN_FILE',	__FILE__ );
@@ -74,6 +69,7 @@ define( 'MY_PLUGIN_URL',	plugin_dir_url( MY_PLUGIN_FILE ) );
  * @return  object|My_Plugin
  */
 function MYPLUGIN() {
+	require_once __DIR__ . 'class-my-plugin-autoload.php';
 	return Core\My_Plugin::instance();
 }
 
