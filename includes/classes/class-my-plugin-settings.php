@@ -1,6 +1,7 @@
 <?php
 
-namespace My_Plugin\Core\Includes\Classes;
+namespace My_Plugin\Init\Classes;
+
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -96,7 +97,7 @@ class My_Plugin_Settings{
 	 */
 	function __construct($plugin_header_info){
 
-		$this->plugin_name = My_Plugin_NAME;
+		$this->plugin_name = MY_PLUGIN_NAME;
 	}
 
 	/**

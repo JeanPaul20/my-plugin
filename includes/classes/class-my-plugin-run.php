@@ -1,6 +1,7 @@
 <?php
 
-namespace My_Plugin\Core\Includes\Classes;
+namespace My_Plugin\Init\Classes;
+
 
 
 /**
@@ -76,8 +77,9 @@ class My_Plugin_Run{
 	 */
 	private function add_hooks(){
 	
-		add_action( 'plugin_action_links_' . MY_PLUGIN_PLUGIN_BASE, array( $this, 'add_plugin_action_link' ), 20 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_backend_scripts_and_styles' ), 20 );
+		add_action( 'plugin_action_links_' . MY_PLUGIN_BASE, array( $this, 'add_plugin_action_link' ), 20 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts_and_styles' ), 20 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_public_scripts_and_styles' ), 20 );
 	
 	}
 
@@ -115,8 +117,25 @@ class My_Plugin_Run{
 	 *
 	 * @return	void
 	 */
-	public function enqueue_backend_scripts_and_styles() {
-		wp_enqueue_style( 'myplugin-backend-styles', MY_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), My_Plugin_VERSION, 'all' );
+	public function enqueue_public_scripts_and_styles() {
+		wp_enqueue_style( 'my-plugin-public', MY_PLUGIN_URL . 'public/assets/css/my-plugin-public.css', array(), MY_PLUGIN_VERSION, 'all' );
+
+		wp_enqueue_script( 'my-plugin-public-scripts', MY_PLUGIN_URL . 'public/assets/css/my-plugin-public.js', array(), MY_PLUGIN_VERSION, false );
 	}
+
+	public function enqueue_admin_scripts_and_styles() {
+		wp_enqueue_style( 'bootstrap-5', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css', array( ), '5.3.2', 'all' );
+	    wp_style_add_data( 'bootstrap-5', array( 'integrity', 'crossorigin' ),  array( 'sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN', 'anonymous' ) );
+		wp_enqueue_style( 'my-plugin-admin', MY_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), MY_PLUGIN_VERSION, 'all' );
+		
+		
+		wp_enqueue_script( 'my-plugin-admin-scripts', MY_PLUGIN_URL . 'core/includes/assets/js/backend-scripts.js', array(), MY_PLUGIN_VERSION, false );
+		wp_localize_script( 'my-plugin-admin-scripts', 'my-plugin', array('plugin_name' => __( MY_PLUGIN_NAME, 'plugin_name' )));
+
+		wp_enqueue_script( 'bootstrap-5', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js', array(), '5.3.2', false );
+		wp_script_add_data( 'bootstrap-5', array( 'integrity', 'crossorigin' ) , array( 'sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL', 'anonymous' ) );
+	}
+
+
 
 }
