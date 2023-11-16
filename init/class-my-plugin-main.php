@@ -8,7 +8,7 @@ use My_Plugin\Init\Classes\{
 	My_Plugin_Settings
 };
 
-
+use My_Plugin\Singleton;
 
 /**
  * 
@@ -48,7 +48,7 @@ if (!defined('ABSPATH')) {
  */
 final class My_Plugin_Main
 {
-
+	use Singleton;
 	/**
 	 * Define wpdb property in Table class
 	 *
@@ -126,31 +126,33 @@ final class My_Plugin_Main
      */
     private bool $just_activated = false;
 
-	/**
-	 * Throw error on object clone.
-	 *
-	 * Cloning instances of the class is forbidden.
-	 *
-	 * @access	public
-	 * @since	1.0.0
-	 * @return	void
-	 */
-	public function __clone()
-	{
-		_doing_it_wrong(__FUNCTION__, __('You are not allowed to clone this class.', 'my-plugin'), '1.0.0');
-	}
+	private array $data = [];
 
-	/**
-	 * Disable unserializing of the class.
-	 *
-	 * @access	public
-	 * @since	1.0.0
-	 * @return	void
-	 */
-	public function __wakeup()
-	{
-		_doing_it_wrong(__FUNCTION__, __('You are not allowed to unserialize this class.', 'my-plugin'), '1.0.0');
-	}
+	public function __construct() {
+         if ( ! \function_exists( 'get_plugins' ) )
+                require_once( \ABSPATH . 'wp-admin/includes/plugin.php' );
+
+				$this->data[ 'File' ] = $this->plugin_file;
+				$this->data[ 'Dir' ] = \plugin_dir_path( $this->data[ 'File' ] );
+				$this->data[ 'Url' ] = \plugin_dir_url( $this->data[ 'File' ] );
+				$this->data[ 'BaseName' ] = \plugin_basename( $this->data[ 'File' ] );
+				$this->data[ 'Slug' ] = false !== \strpos( $this->data[ 'BaseName' ], '/' )
+					? \dirname( $this->data[ 'BaseName' ] )	: $this->data[ 'BaseName' ];
+	
+				$plugins = \get_plugins( \DIRECTORY_SEPARATOR . $this->data[ 'Slug' ] );
+				$this->data += \reset( $plugins );
+	
+				$domainpath = $this->data[ 'Slug' ] . $this->data[ 'DomainPath' ];
+				if ( $this->data[ 'TextDomain' ] and ! \is_textdomain_loaded( $this->data[ 'TextDomain' ] ) )
+					\load_plugin_textdomain( $this->data[ 'TextDomain' ], false, $domainpath );
+	
+				\register_activation_hook( $this->data[ 'File' ], [ $this, 'activation' ] );
+				\register_deactivation_hook( $this->data[ 'File' ], [ $this, 'deactivation' ] );
+
+				$this->base_hooks();
+		
+    }
+
 
 	/**
      * Mark the plugin as activated.
@@ -174,12 +176,11 @@ final class My_Plugin_Main
 	public static function instance()
 	{
 		if (!isset(self::$instance) && !(self::$instance instanceof My_Plugin_Main)) {
-			self::$instance	= new My_Plugin_Main;
+			self::$instance	= new My_Plugin_Main();
+			self::$instance->getInstance();
 			self::$instance->get_plugin_header_info();
-			self::$instance->base_hooks();
 			self::$instance->helpers = new My_Plugin_Helpers();
 			self::$instance->settings = new My_Plugin_Settings();
-
 			//Fire the plugin logic
 			new My_Plugin_Run();
 
@@ -205,17 +206,7 @@ final class My_Plugin_Main
 		add_action('plugins_loaded', array(self::$instance, 'load_textdomain'));
 	}
 
-	/**
-	 * Loads the plugin language files.
-	 *
-	 * @access  public
-	 * @since   1.0.0
-	 * @return  void
-	 */
-	public function load_textdomain()
-	{
-		load_plugin_textdomain('my-plugin', FALSE, dirname(plugin_basename(MY_PLUGIN_FILE)) . '/languages/');
-	}
+
 
 	public function get_plugin_header_info()
 	{

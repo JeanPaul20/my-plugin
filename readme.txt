@@ -4,9 +4,9 @@ Plugin URI: https://jeanpaulart.com/plugins/my-plugin/
 Donate link: 
 Contributors: 
 Tags: 
-Requires at least: 
-Tested up to: 
-Requires PHP: 
+Requires at least: 6.00
+Tested up to: 6.4.0
+Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

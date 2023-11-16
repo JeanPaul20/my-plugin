@@ -4,7 +4,7 @@
  * My Plugin
  *
  * @package       My_Plugin
- * @author        Jean Paul Jaspers
+ * @author        JPE Jaspers
  * @license       gplv2
  * @version       1.0.0
  *
@@ -13,7 +13,7 @@
  * Plugin URI:    https://jeanpaulart.com/plugins/my-plugin/
  * Description:   Boilerplate
  * Version:       1.0.0
- * Author:        Jean Paul Jaspers
+ * Author:        JPE Jaspers
  * Author URI:    https://jeanpaulart.com/about/
  * Text Domain:   my-plugin
  * Domain Path:   /languages
@@ -77,10 +77,16 @@ function is_activated(): bool
   return false;
 }
 
+function deactivate_plugin(): void
+{
+  delete_option('my_plugin_activated');
+  Init\My_Plugin_Deactivator::deactivate();
+}
+
 function init_plugin()
 {
 
-  require_once 'autoloader.php';
+  require_once( plugin_dir_path(__FILE__) . '/lib/autoload.php');
 
   // Setup plugin constants
   setup_constants();
@@ -97,3 +103,4 @@ function init_plugin()
   $plugin->instance();
 }
 register_activation_hook( __FILE__, __NAMESPACE__ . '\\activate_plugin' );
+register_deactivation_hook(__FILE__, __NAMESPACE__ . '\\deactivate_plugin');

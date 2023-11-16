@@ -81,7 +81,6 @@ class My_Plugin_Settings
 	 */
 	function __construct()
 	{
-		$this->plugin_info = instance()->helpers()->set_option_slug($this->option_slug);
 		$this->plugin_info = \My_Plugin\Init\My_Plugin_Main::instance()->get_plugin_header_info();
 		$this->plugin_name = $this->plugin_info['Name'];
 		$this->plugin_version = $this->plugin_info['Version'];

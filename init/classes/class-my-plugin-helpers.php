@@ -71,7 +71,7 @@ class My_Plugin_Helpers{
 
 	 public function __construct()
 	{
-		$this->option_slug = Plugin()->settings->get_option_slug();
+		$this->option_slug = plugin()->settings->get_option_slug();
 		$this->plugin_db_prefix = Plugin()->settings->get_table_name();
 		$this->table_name = Plugin()->settings->get_table_name();
 	}

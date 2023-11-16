@@ -1,0 +1,25 @@
+{
+  "name": "myplugin/my-plugin",
+  "type": "wordpress-plugin",
+  "description": "Boilerplate",
+  "version": "1.0.0",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "JPE Jaspers",
+      "email": "your-email@example.com",
+      "homepage": "https://jeanpaulart.com/about/"
+    }
+  ],
+  "config": {
+    "vendor-dir": "lib"
+  },
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "My_Plugin\\": "lib/"
+    }
+  }
+}
